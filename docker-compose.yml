@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  rec_backend:
+    container_name: rec_backend
+    image: nashvador/rec-backend:latest
+    build:
+      context: .
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./:/usr/src/app
