@@ -6,10 +6,6 @@ import { Reciept } from "../types/types";
 
 const recieptsStore: Map<string, Reciept | undefined> = new Map();
 
-const testRoute = (_request: Request, response: Response) => {
-  response.send("Welcome to the server");
-};
-
 const getPointsFromId = (request: Request, response: Response) => {
   const recieptId = request.params.id;
   const reciept: Reciept | undefined = recieptsStore.get(recieptId);
@@ -25,6 +21,18 @@ const getPointsFromId = (request: Request, response: Response) => {
 
 const parseReciept = (request: Request, response: Response) => {
   const reciept: Reciept = request.body as Reciept;
+
+  if (
+    !reciept ||
+    !reciept.retailer ||
+    !reciept.purchaseDate ||
+    !reciept.purchaseTime ||
+    !reciept.items ||
+    !reciept.total
+  ) {
+    return response.json(400).send({ error: "The receipt is invalid" });
+  }
+
   const recieptId = uuidv4();
   const recieptPoints = calculateRecieptPoints(reciept);
   reciept.calculatedPoints = recieptPoints;
@@ -34,4 +42,4 @@ const parseReciept = (request: Request, response: Response) => {
   response.status(200).send({ id: recieptId });
 };
 
-export { testRoute, getPointsFromId, parseReciept };
+export { getPointsFromId, parseReciept };
