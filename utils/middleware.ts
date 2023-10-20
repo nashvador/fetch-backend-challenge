@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction, ErrorRequestHandler } from "express";
-import { info, error } from "./logger";
+import { info, errorlog } from "./logger";
 
 const requestLogger = (
   request: Request,
@@ -23,7 +23,7 @@ const errorHandler: ErrorRequestHandler = (
   _response: Response,
   next: NextFunction
 ) => {
-  error(error);
+  errorlog(error);
   next(error);
 };
 

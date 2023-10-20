@@ -3,7 +3,7 @@ import {
   testRoute,
   getPointsFromId,
   parseReciept,
-} from "../controllers/fetchRecieptController";
+} from "../controllers/recieptController";
 
 const recieptRouter = Router();
 

@@ -1,4 +1,6 @@
-function calculateRecieptPoints(reciept: any): number {
+import { Reciept, RecieptItem } from "../types/types";
+
+function calculateRecieptPoints(reciept: Reciept): number {
   let totalPoints = 0;
 
   function alphanumericPoints(): number {
@@ -6,11 +8,11 @@ function calculateRecieptPoints(reciept: any): number {
   }
 
   function isWholeNumber(): number {
-    return reciept.total % 1 === 0 ? 50 : 0;
+    return parseFloat(reciept.total) % 1 === 0 ? 50 : 0;
   }
 
   function isMultiple(): number {
-    return reciept.total % 0.25 === 0 ? 25 : 0;
+    return parseFloat(reciept.total) % 0.25 === 0 ? 25 : 0;
   }
 
   function isTwoItems(): number {
@@ -19,7 +21,7 @@ function calculateRecieptPoints(reciept: any): number {
 
   function trimmedLengthPoints(): number {
     let points = 0;
-    reciept.items.forEach((item: any) => {
+    reciept.items.forEach((item: RecieptItem) => {
       const trimmedLength = item.shortDescription.trim().length;
       if (trimmedLength % 3 === 0) {
         points += Math.ceil(parseFloat(item.price) * 0.2);

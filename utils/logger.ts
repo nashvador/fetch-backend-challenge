@@ -1,9 +1,13 @@
+// eslint-disable-next-line
 const info = (...params: any) => {
+  // eslint-disable-next-line
   console.log(...params);
 };
 
-const error = (...params: any) => {
+// eslint-disable-next-line
+const errorlog = (...params: any) => {
+  // eslint-disable-next-line
   console.error(...params);
 };
 
-export { info, error };
+export { info, errorlog };
