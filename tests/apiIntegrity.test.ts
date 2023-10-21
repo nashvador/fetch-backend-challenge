@@ -9,13 +9,16 @@ describe("Ability to access api endpoints", () => {
   let recieptId;
   test("Can create a reciept and recieve an id", async () => {
     const response = await api.post("/receipts/process").send(receipt);
+    // eslint-disable-next-line
     recieptId = response.body.id;
+    // eslint-disable-next-line
     expect(response.body).toBeDefined;
     expect(response.body.id).toHaveLength(36);
     expect(response.statusCode).toBe(200);
   });
 
   test("Verify if can get reciept points after searching id", async () => {
+    // eslint-disable-next-line
     const response = await api.get(`/receipts/${recieptId!}/points`);
     expect(response.body.points).toBe(109);
     expect(response.statusCode).toBe(200);
