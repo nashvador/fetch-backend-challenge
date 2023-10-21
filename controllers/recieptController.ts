@@ -12,7 +12,7 @@ const getPointsFromId = (request: Request, response: Response) => {
 
   if (!reciept) {
     return response.status(404).send({
-      errorMessage: `The reciept with id ${recieptId} has not been found.`,
+      error: `The reciept with id ${recieptId} has not been found.`,
     });
   } else {
     return response.status(200).send({ points: reciept.calculatedPoints });
@@ -30,7 +30,7 @@ const parseReciept = (request: Request, response: Response) => {
     !reciept.items ||
     !reciept.total
   ) {
-    return response.json(400).send({ error: "The receipt is invalid" });
+    return response.status(400).send({ error: "The receipt is invalid" });
   }
 
   const recieptId = uuidv4();
