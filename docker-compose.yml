@@ -1,16 +1,12 @@
 version: "3.8"
 services:
   rec_backend:
-    image: node:16.13.1-alpine3.14
-    build:
-      context: .
+    build: .
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
-    working_dir: /usr/src/app
     ports:
       - "3001:3001"
-    command: sh -c "npm install -g ts-node-dev && npm install && npm run dev "
     environment:
       NODE_ENV: development
       PORT: 3001
