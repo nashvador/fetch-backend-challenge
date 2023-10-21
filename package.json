@@ -5,8 +5,9 @@
   "main": "index.ts",
   "scripts": {
     "test": "jest",
+    "build": "tsc",
     "dev": "ts-node-dev index.ts",
-    "start": " ts-node index.ts",
+    "start": "node build/index.js",
     "lint": "eslint --ext .ts ."
   },
   "author": "",
