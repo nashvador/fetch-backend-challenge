@@ -42,4 +42,8 @@ const parseReciept = (request: Request, response: Response) => {
   response.status(200).send({ id: recieptId });
 };
 
-export { getPointsFromId, parseReciept };
+const welcomeMessage = (_request: Request, response: Response) => {
+  response.status(200).send("Welcome to Fetch Rewards Backend");
+};
+
+export { getPointsFromId, parseReciept, welcomeMessage };
