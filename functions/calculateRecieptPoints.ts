@@ -31,8 +31,8 @@ function calculateRecieptPoints(reciept: Reciept): number {
   }
 
   function isOddDate(): number {
-    const purchaseDate = new Date(reciept.purchaseDate);
-    return purchaseDate.getDate() % 2 !== 0 ? 6 : 0;
+    const purchaseDate = reciept.purchaseDate.split("-");
+    return parseInt(purchaseDate[2]) % 2 === 1 ? 6 : 0;
   }
 
   function isSpecificTime() {
